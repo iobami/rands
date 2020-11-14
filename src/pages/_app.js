@@ -1,14 +1,18 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Provider } from 'react-redux';
+import { useStore } from '../redux/store';
 import { DashboardLayout } from '../layouts';
 import { routesArray } from '../routes';
 
 function MyApp({ Component, pageProps }) {
+  const store = useStore(pageProps.initialReduxState);
+
   const router = useRouter();
   const routes = routesArray();
 
   return (
-    <>
+    <Provider store={store}>
       <Head>
         <base href="../" />
         <meta charSet="utf-8" />
@@ -34,7 +38,7 @@ function MyApp({ Component, pageProps }) {
       {!routes.includes(router.pathname) && (
         <Component {...pageProps} />
       )}
-    </>
+    </Provider>
   );
 }
 
