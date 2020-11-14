@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { userDetailLoading, userDataLoader } from '../redux/entities/services';
 
 export default function Accounts() {
+  const dispatch = useDispatch();
+  const services = useSelector((state) => state.services);
+
+  useEffect(() => {
+    dispatch(userDataLoader(true));
+    dispatch(userDetailLoading());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="nk-content nk-content-fluid">
