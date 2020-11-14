@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
@@ -7,9 +8,14 @@ import { routesArray } from '../routes';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
+  const [showSideBar, setShowSideBar] = useState(false);
 
   const router = useRouter();
   const routes = routesArray();
+
+  useEffect(() => {
+    setShowSideBar(false);
+  }, [router]);
 
   return (
     <Provider store={store}>
@@ -30,7 +36,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       {routes.includes(router.pathname) && (
-        <DashboardLayout>
+        <DashboardLayout showSideBar={showSideBar} setShowSideBar={setShowSideBar}>
           <Component {...pageProps} />
         </DashboardLayout>
       )}

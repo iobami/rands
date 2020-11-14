@@ -1,17 +1,16 @@
 import React from 'react';
-// import { useRouter } from 'next/router';
 
 import { Header, Footer, Sidebar } from '../partials';
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({ children, showSideBar, setShowSideBar }) {
 
   return (
     <div className="nk-app-root">
       <div className="nk-main">
-        <Sidebar />
+        <Sidebar show={showSideBar} onHide={() => setShowSideBar(false)} />
 
         <div className="nk-wrap">
-          <Header />
+          <Header onShow={() => setShowSideBar(true)} />
           {children}
           <Footer />
         </div>

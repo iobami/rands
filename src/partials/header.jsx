@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { routes } from '../routes';
 
-export default function Header() {
+export default function Header({ onShow }) {
   const [showMiniProfile, setShowMiniProfile] = useState(false);
-  const [showNotifications, setShowNotifications] = useState(true);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   return (
     <div className="nk-header nk-header-fluid nk-header-fixed is-light">
       <div className="container-fluid">
         <div className="nk-header-wrap">
-          <div className="nk-menu-trigger d-xl-none ml-n1">
+          <div className="nk-menu-trigger d-xl-none ml-n1" onClick={onShow}>
             <a className="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em className="icon ni ni-menu"></em></a>
           </div>
           <div className="nk-header-brand d-xl-none">
