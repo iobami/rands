@@ -1,17 +1,19 @@
-import React from 'react';
-// import { routes } from '../routes';
+import React, { useState } from 'react';
+import { routes } from '../routes';
 
 export default function Header() {
+  const [showMiniProfile, setShowMiniProfile] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(true);
 
   return (
     <div className="nk-header nk-header-fluid nk-header-fixed is-light">
       <div className="container-fluid">
         <div className="nk-header-wrap">
           <div className="nk-menu-trigger d-xl-none ml-n1">
-            <a href="#" className="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em className="icon ni ni-menu"></em></a>
+            <a className="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em className="icon ni ni-menu"></em></a>
           </div>
           <div className="nk-header-brand d-xl-none">
-            <a href="html/crypto/index.html" className="logo-link">
+            <a href={routes.entry.path} className="logo-link">
               <img className="logo-light logo-img" src="./images/logo.png" srcSet="./images/logo2x.png 2x" alt="logo" />
               <img className="logo-dark logo-img" src="./images/logo-dark.png" srcSet="./images/logo-dark2x.png 2x" alt="logo-dark" />
               <span className="nio-version">Crypto</span>
@@ -32,8 +34,16 @@ export default function Header() {
           </div>
           <div className="nk-header-tools">
             <ul className="nk-quick-nav">
-              <li className="dropdown user-dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+              <li className={showMiniProfile ? 'dropdown user-dropdown show' : 'dropdown user-dropdown'}>
+                <a
+                  onClick={() => {
+                    setShowNotifications(false);
+                    setShowMiniProfile(!showMiniProfile);
+                  }}
+                  className="dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-expanded={showMiniProfile}
+                >
                   <div className="user-toggle">
                     <div className="user-avatar sm">
                       <em className="icon ni ni-user-alt"></em>
@@ -44,7 +54,7 @@ export default function Header() {
                     </div>
                   </div>
                 </a>
-                <div className="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1">
+                <div className={showMiniProfile ? 'dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1 show' : 'dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1'}>
                   <div className="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                     <div className="user-card">
                       <div className="user-avatar">
@@ -76,11 +86,19 @@ export default function Header() {
                   </div>
                 </div>
               </li>
-              <li className="dropdown notification-dropdown mr-n1">
-                <a href="#" className="dropdown-toggle nk-quick-nav-icon" data-toggle="dropdown">
+              <li className={showNotifications ? 'dropdown notification-dropdown mr-n1 show' : 'dropdown notification-dropdown mr-n1'}>
+                <a
+                  onClick={() => {
+                    setShowMiniProfile(false);
+                    setShowNotifications(!showNotifications);
+                  }}
+                  className="dropdown-toggle nk-quick-nav-icon"
+                  data-toggle="dropdown"
+                  aria-expanded={showNotifications}
+                >
                   <div className="icon-status icon-status-info"><em className="icon ni ni-bell"></em></div>
                 </a>
-                <div className="dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1">
+                <div className={showNotifications ? 'dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1 show' : 'dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1'}>
                   <div className="dropdown-head">
                     <span className="sub-title nk-dropdown-title">Notifications</span>
                     <a href="#">Mark All as Read</a>

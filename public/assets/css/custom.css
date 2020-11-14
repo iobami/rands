@@ -1,0 +1,19 @@
+.nk-sidebar-element ::-webkit-scrollbar {
+  width: 2px;
+}
+.nk-sidebar-element ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+.nk-sidebar-element ::-webkit-scrollbar-thumb {
+  background: #d3d3d3;
+  height: 10px;
+}
+.nk-sidebar-element ::-webkit-scrollbar-thumb:hover {
+  background: #a9a9a9;
+  cursor: pointer;
+}
+
+.nk-sidebar-content {
+  overflow-y: auto;
+}

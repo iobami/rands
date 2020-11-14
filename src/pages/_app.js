@@ -22,6 +22,7 @@ function MyApp({ Component, pageProps }) {
 
         <link rel="stylesheet" href="./assets/css/dashlite.css?ver=1.4.0" />
         <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=1.4.0" />
+        <link id="skin-default" rel="stylesheet" href="./assets/css/custom.css" />
       </Head>
 
       {routes.includes(router.pathname) && (
