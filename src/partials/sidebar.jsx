@@ -1,7 +1,16 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
-// import { routes } from '../routes';
+import { routes } from '../routes';
+
+const menu = [
+  { title: 'Dashboard', className: 'icon ni ni-dashboard', route: routes.entry.path },
+  { title: 'My Account', className: 'icon ni ni-user-c', route: routes.accounts.path },
+  { title: 'Wallets', className: 'icon ni ni-wallet-alt', route: routes.entry.path },
+  { title: 'Buy / Sell', className: 'icon ni ni-coins', route: routes.entry.path },
+  { title: 'Orders', className: 'icon ni ni-repeat', route: routes.entry.path },
+  { title: 'My Profile', className: 'icon ni ni-account-setting', route: routes.entry.path },
+  { title: 'KYC Application', className: 'icon ni ni-file-text', route: routes.entry.path }
+];
 
 export default function Sidebar() {
   return (
@@ -120,90 +129,18 @@ export default function Sidebar() {
                 <li className="nk-menu-heading">
                   <h6 className="overline-title">Menu</h6>
                 </li>
-                <li className="nk-menu-item">
-                  <a href="html/crypto/index.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-dashboard"></em></span>
-                    <span className="nk-menu-text">Dashboard</span>
-                  </a>
-                </li>
-                <li className="nk-menu-item">
-                  <a href="html/crypto/accounts.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-user-c"></em></span>
-                    <span className="nk-menu-text">My Account</span>
-                  </a>
-                </li>
-                <li className="nk-menu-item">
-                  <a href="html/crypto/wallets.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-wallet-alt"></em></span>
-                    <span className="nk-menu-text">Wallets</span>
-                  </a>
-                </li>
-                <li className="nk-menu-item">
-                  <a href="html/crypto/buy-sell.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-coins"></em></span>
-                    <span className="nk-menu-text">Buy / Sell</span>
-                  </a>
-                </li>
-                <li className="nk-menu-item">
-                  <a href="html/crypto/order-history.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-repeat"></em></span>
-                    <span className="nk-menu-text">Orders</span>
-                  </a>
-                </li>
-                <li className="nk-menu-item">
-                  <a href="html/crypto/profile.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-account-setting"></em></span>
-                    <span className="nk-menu-text">My Profile</span>
-                  </a>
-                </li>
-                <li className="nk-menu-item">
-                  <a href="html/crypto/kyc-application.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-file-text"></em></span>
-                    <span className="nk-menu-text">KYC Application</span>
-                  </a>
-                </li>
-                <li className="nk-menu-heading">
-                  <h6 className="overline-title">Additionals</h6>
-                </li>
-                <li className="nk-menu-item has-sub">
-                  <a href="#" className="nk-menu-link nk-menu-toggle">
-                    <span className="nk-menu-icon"><em className="icon ni ni-files-fill"></em></span>
-                    <span className="nk-menu-text">Pages</span>
-                  </a>
-                  <ul className="nk-menu-sub">
-                    <li className="nk-menu-item">
-                      <a href="html/crypto/welcome.html" className="nk-menu-link">
-                        <span className="nk-menu-text">Welcome / Intro</span>
-                      </a>
+                {menu.map(({ title, className, route }, index) => {
+                  return (
+                    <li className="nk-menu-item" key={index}>
+                      <Link href={route}>
+                        <a className="nk-menu-link">
+                          <span className="nk-menu-icon"><em className={className}></em></span>
+                          <span className="nk-menu-text">{title}</span>
+                        </a>
+                      </Link>
                     </li>
-                    <li className="nk-menu-item">
-                      <a href="html/general/pages/auths/auth-login.html" target="_blank" className="nk-menu-link">
-                        <span className="nk-menu-text">Login / Sign in</span>
-                      </a>
-                    </li>
-                    <li className="nk-menu-item">
-                      <a href="html/general/pages/auths/auth-register.html" target="_blank" className="nk-menu-link">
-                        <span className="nk-menu-text">Register / Sign up</span>
-                      </a>
-                    </li>
-                    <li className="nk-menu-item">
-                      <a href="html/general/pages/auths/auth-reset.html" target="_blank" className="nk-menu-link">
-                        <span className="nk-menu-text">Forgot Password</span>
-                      </a>
-                    </li>
-                    <li className="nk-menu-item">
-                      <a href="html/general/pages/auths/auth-success.html" target="_blank" className="nk-menu-link">
-                        <span className="nk-menu-text">Success / Confirm</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nk-menu-item">
-                  <a href="html/general/components.html" className="nk-menu-link">
-                    <span className="nk-menu-icon"><em className="icon ni ni-layers-fill"></em></span>
-                    <span className="nk-menu-text">Components</span>
-                  </a>
-                </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="nk-sidebar-widget">
