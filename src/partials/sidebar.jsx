@@ -5,11 +5,11 @@ import { routes } from '../routes';
 const menu = [
   { title: 'Dashboard', className: 'icon ni ni-dashboard', route: routes.entry.path },
   { title: 'My Account', className: 'icon ni ni-user-c', route: routes.accounts.path },
-  { title: 'Wallets', className: 'icon ni ni-wallet-alt', route: routes.entry.path },
-  { title: 'Buy / Sell', className: 'icon ni ni-coins', route: routes.entry.path },
-  { title: 'Orders', className: 'icon ni ni-repeat', route: routes.entry.path },
-  { title: 'My Profile', className: 'icon ni ni-account-setting', route: routes.entry.path },
-  { title: 'KYC Application', className: 'icon ni ni-file-text', route: routes.entry.path }
+  { title: 'Wallets', className: 'icon ni ni-wallet-alt', route: routes.wallets.path },
+  { title: 'Buy / Sell', className: 'icon ni ni-coins', route: routes.buySell.path },
+  { title: 'Orders', className: 'icon ni ni-repeat', route: routes.orders.path },
+  { title: 'My Profile', className: 'icon ni ni-account-setting', route: routes.profile.path },
+  { title: 'KYC Application', className: 'icon ni ni-file-text', route: routes.kycApplication.path }
 ];
 
 export default function Sidebar({ show, onHide }) {

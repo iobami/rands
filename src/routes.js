@@ -4,6 +4,21 @@ export const routes = {
   },
   accounts: {
     path: '/accounts',
+  },
+  profile: {
+    path: '/profile',
+  },
+  wallets: {
+    path: '/wallets',
+  },
+  buySell: {
+    path: '/buy-sell',
+  },
+  orders: {
+    path: '/orders',
+  },
+  kycApplication: {
+    path: '/kyc/application',
   }
 };
 
