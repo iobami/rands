@@ -96,109 +96,10 @@ export default function Dashboard() {
                                 <div className="nk-wgw-icon">
                                   <em className="icon ni ni-sign-btc"></em>
                                 </div>
-                                <h5 className="nk-wgw-title title">NioWallet</h5>
-                              </div>
-                              <div className="nk-wgw-balance">
-                                <div className="amount">4.434953<span className="currency currency-nio">NIO</span></div>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-4">
-                        <div className="card bg-light">
-                          <div className="nk-wgw sm">
-                            <a className="nk-wgw-inner" href="html/crypto/wallet-bitcoin.html">
-                              <div className="nk-wgw-name">
-                                <div className="nk-wgw-icon">
-                                  <em className="icon ni ni-sign-btc"></em>
-                                </div>
                                 <h5 className="nk-wgw-title title">Bitcoin Wallet</h5>
                               </div>
                               <div className="nk-wgw-balance">
                                 <div className="amount">4.434953<span className="currency currency-btc">BTC</span></div>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-4">
-                        <div className="card bg-light">
-                          <div className="nk-wgw sm">
-                            <a className="nk-wgw-inner" href="html/crypto/wallet-bitcoin.html">
-                              <div className="nk-wgw-name">
-                                <div className="nk-wgw-icon">
-                                  <em className="icon ni ni-sign-eth"></em>
-                                </div>
-                                <h5 className="nk-wgw-title title">Ethereum Wallet</h5>
-                              </div>
-                              <div className="nk-wgw-balance">
-                                <div className="amount">0.000560<span className="currency currency-eth">ETH</span></div>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="nk-block nk-block-md">
-                    <div className="nk-block-head-xs">
-                      <div className="nk-block-between-md g-2">
-                        <div className="nk-block-head-content">
-                          <h6 className="nk-block-title title">Fiat Accounts</h6>
-                        </div>
-                        <div className="nk-block-head-content">
-                          <a href="html/crypto/wallets.html" className="link link-primary">See All</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row g-2">
-                      <div className="col-sm-4">
-                        <div className="card bg-light">
-                          <div className="nk-wgw sm">
-                            <a className="nk-wgw-inner" href="html/crypto/wallet-bitcoin.html">
-                              <div className="nk-wgw-name">
-                                <div className="nk-wgw-icon">
-                                  <em className="icon ni ni-sign-btc"></em>
-                                </div>
-                                <h5 className="nk-wgw-title title">NioWallet</h5>
-                              </div>
-                              <div className="nk-wgw-balance">
-                                <div className="amount">4.434953<span className="currency currency-nio">NIO</span></div>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-4">
-                        <div className="card bg-light">
-                          <div className="nk-wgw sm">
-                            <a className="nk-wgw-inner" href="html/crypto/wallet-bitcoin.html">
-                              <div className="nk-wgw-name">
-                                <div className="nk-wgw-icon">
-                                  <em className="icon ni ni-sign-btc"></em>
-                                </div>
-                                <h5 className="nk-wgw-title title">Bitcoin Wallet</h5>
-                              </div>
-                              <div className="nk-wgw-balance">
-                                <div className="amount">4.434953<span className="currency currency-btc">BTC</span></div>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-4">
-                        <div className="card bg-light">
-                          <div className="nk-wgw sm">
-                            <a className="nk-wgw-inner" href="html/crypto/wallet-bitcoin.html">
-                              <div className="nk-wgw-name">
-                                <div className="nk-wgw-icon">
-                                  <em className="icon ni ni-sign-eth"></em>
-                                </div>
-                                <h5 className="nk-wgw-title title">Ethereum Wallet</h5>
-                              </div>
-                              <div className="nk-wgw-balance">
-                                <div className="amount">0.000560<span className="currency currency-eth">ETH</span></div>
                               </div>
                             </a>
                           </div>
@@ -245,22 +146,6 @@ export default function Dashboard() {
                       <div className="tranx-col">
                         <div className="tranx-info">
                           <div className="tranx-data">
-                            <div className="tranx-label">Buy Ehtereum <span className="tranx-icon sm"><img src="./images/coins/eth.svg" alt="" /></span></div>
-                            <div className="tranx-date">Nov 12, 2019 11:34 PM</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="tranx-col">
-                        <div className="tranx-amount">
-                          <div className="number">1.538405 <span className="currency currency-btc">ETH</span></div>
-                          <div className="number-sm">1,176.34 <span className="currency currency-usd">USD</span></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="tranx-item">
-                      <div className="tranx-col">
-                        <div className="tranx-info">
-                          <div className="tranx-data">
                             <div className="tranx-label">Buy Bitcoin <em className="tranx-icon sm icon ni ni-sign-btc"></em></div>
                             <div className="tranx-date">Nov 12, 2019 11:34 PM</div>
                           </div>
@@ -270,22 +155,6 @@ export default function Dashboard() {
                         <div className="tranx-amount">
                           <div className="number">0.5384 <span className="currency currency-btc">BTC</span></div>
                           <div className="number-sm">3,980.93 <span className="currency currency-usd">USD</span></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="tranx-item">
-                      <div className="tranx-col">
-                        <div className="tranx-info">
-                          <div className="tranx-data">
-                            <div className="tranx-label">Buy Ehtereum <span className="tranx-icon sm"><img src="./images/coins/eth.svg" alt="" /></span></div>
-                            <div className="tranx-date">Nov 12, 2019 11:34 PM</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="tranx-col">
-                        <div className="tranx-amount">
-                          <div className="number">1.538405 <span className="currency currency-btc">ETH</span></div>
-                          <div className="number-sm">1,176.34 <span className="currency currency-usd">USD</span></div>
                         </div>
                       </div>
                     </div>
