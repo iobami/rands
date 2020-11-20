@@ -3,13 +3,15 @@ import Link from 'next/link';
 import { routes } from '../routes';
 
 const menu = [
-  { title: 'Dashboard', className: 'icon ni ni-dashboard', route: routes.entry.path },
-  { title: 'My Account', className: 'icon ni ni-user-c', route: routes.accounts.path },
-  { title: 'Wallets', className: 'icon ni ni-wallet-alt', route: routes.wallets.path },
-  { title: 'Buy / Sell', className: 'icon ni ni-coins', route: routes.buySell.path },
-  { title: 'Orders', className: 'icon ni ni-repeat', route: routes.orders.path },
+  // { title: 'Dashboard', className: 'icon ni ni-dashboard', route: routes.entry.path },
+  // { title: 'My Account', className: 'icon ni ni-user-c', route: routes.accounts.path },
+  { title: 'Overview', className: 'icon ni ni-wallet-alt', route: routes.overview.path },
+  { title: 'Transactions', className: 'icon ni ni-user-c', route: routes.transactions.path },
+  // { title: 'Buy / Sell', className: 'icon ni ni-coins', route: routes.buySell.path },
+  // { title: 'Orders', className: 'icon ni ni-repeat', route: routes.orders.path },
   { title: 'My Profile', className: 'icon ni ni-account-setting', route: routes.profile.path },
-  { title: 'KYC Application', className: 'icon ni ni-file-text', route: routes.kycApplication.path }
+  // { title: 'KYC Application', className: 'icon ni ni-file-text', route: routes.kycApplication.path },
+  { title: 'Settings', className: 'icon ni ni-setting', route: routes.settings.path },
 ];
 
 export default function Sidebar({ show, onHide }) {

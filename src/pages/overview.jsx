@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
 
-export default function Default() {
+export default function Overview() {
 
   return (
     <Fragment>
       <Head>
-        <title>Wallets - Crypto | DashLite Admin Template</title>
+        <title>Oveview - Crypto | DashLite Admin Template</title>
       </Head>
 
       <div class="nk-content nk-content-fluid">
@@ -16,7 +16,7 @@ export default function Default() {
               <div class="nk-block-head-sub"><span>Account Wallet</span> </div>
               <div class="nk-block-between-md g-4">
                 <div class="nk-block-head-content">
-                  <h2 class="nk-block-title fw-normal">Wallet / Assets</h2>
+                  {/* <h2 class="nk-block-title fw-normal">Wallet / Assets</h2> */}
                   <div class="nk-block-des">
                     <p>Here is the list of your assets / wallets!</p>
                   </div>

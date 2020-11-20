@@ -3,15 +3,17 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 import { useStore } from '../redux/store';
-import { DashboardLayout } from '../layouts';
-import { routesArray } from '../routes';
+import { AuthLayout, DashboardLayout } from '../layouts';
+// import { routesArray } from '../routes';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   const [showSideBar, setShowSideBar] = useState(false);
 
   const router = useRouter();
-  const routes = routesArray();
+  // const routes = routesArray();
+
+  const authRoutes = ['/']
 
   useEffect(() => {
     setShowSideBar(false);
@@ -35,15 +37,15 @@ function MyApp({ Component, pageProps }) {
         <link id="skin-default" rel="stylesheet" href="./assets/css/custom.css" />
       </Head>
 
-      {routes.includes(router.pathname) && (
-        <DashboardLayout showSideBar={showSideBar} setShowSideBar={setShowSideBar}>
+      {authRoutes.includes(router.pathname) ? (
+        <AuthLayout>
           <Component {...pageProps} />
-        </DashboardLayout>
-      )}
-
-      {!routes.includes(router.pathname) && (
-        <Component {...pageProps} />
-      )}
+        </AuthLayout>
+      ) : (
+          <DashboardLayout showSideBar={showSideBar} setShowSideBar={setShowSideBar}>
+            <Component {...pageProps} />
+          </DashboardLayout>
+        )}
     </Provider>
   );
 }

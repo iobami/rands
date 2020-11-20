@@ -2,14 +2,14 @@ export const routes = {
   entry: {
     path: '/',
   },
-  accounts: {
-    path: '/accounts',
+  transactions: {
+    path: '/transactions',
   },
   profile: {
     path: '/profile',
   },
-  wallets: {
-    path: '/wallets',
+  overview: {
+    path: '/overview',
   },
   buySell: {
     path: '/buy-sell',
@@ -19,7 +19,10 @@ export const routes = {
   },
   kycApplication: {
     path: '/kyc/application',
-  }
+  },
+  settings: {
+    path: '/settings',
+  },
 };
 
 export const routesArray = () => {
