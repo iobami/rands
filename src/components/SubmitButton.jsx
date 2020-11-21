@@ -10,11 +10,11 @@ export default function SubmitButton({ title, isLoading, width }) {
           style={{ width, minHeight: '48px' }}
         >
           <div
-            class="spinner-border text-light"
+            className="spinner-border text-light"
             style={{ width: '1.7rem', height: '1.7rem' }}
             role="status"
           >
-            <span class="sr-only">Loading...</span>
+            <span className="sr-only">Loading...</span>
           </div>
         </button>
       ) : (
