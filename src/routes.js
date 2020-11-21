@@ -2,6 +2,9 @@ export const routes = {
   entry: {
     path: '/',
   },
+  register: {
+    path: '/register',
+  },
   transactions: {
     path: '/transactions',
   },

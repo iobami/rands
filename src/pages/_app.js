@@ -4,16 +4,15 @@ import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 import { useStore } from '../redux/store';
 import { AuthLayout, DashboardLayout } from '../layouts';
-// import { routesArray } from '../routes';
+import { routes } from '../routes';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   const [showSideBar, setShowSideBar] = useState(false);
 
   const router = useRouter();
-  // const routes = routesArray();
 
-  const authRoutes = ['/']
+  const authRoutes = [routes.entry.path, routes.register.path]
 
   useEffect(() => {
     setShowSideBar(false);

@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
+import { getUserAction } from '../redux/entities/user';
 
 import { Header, Footer, Sidebar } from '../partials';
 
 export default function DashboardLayout({ children, showSideBar, setShowSideBar }) {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    dispatch(getUserAction.loading());
+  }, [router.pathname]);
 
   return (
     <div className="nk-app-root">

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { routes } from '../routes';
 
 export default function Header({ onShow }) {
+  const { getUserItem } = useSelector((state) => state.user);
+
   const [showMiniProfile, setShowMiniProfile] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
@@ -54,27 +57,38 @@ export default function Header({ onShow }) {
                       <em className="icon ni ni-user-alt"></em>
                     </div>
                     <div className="user-info d-none d-md-block">
-                      <div className="user-status user-status-unverified">Unverified</div>
-                      <div className="user-name dropdown-indicator">John Doe</div>
+                      {/* <div className="user-status user-status-unverified">Unverified</div> */}
+                      <div className="user-name dropdown-indicator">{getUserItem && getUserItem.user_name}</div>
                     </div>
                   </div>
                 </a>
-                <div className={showMiniProfile ? 'dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1 show' : 'dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1'}>
+                <div
+                  onClick={() => {
+                    setShowNotifications(false);
+                    setShowMiniProfile(!showMiniProfile);
+                  }}
+                  className={showMiniProfile ?
+                    'dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1 show' :
+                    'dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1'}
+                >
                   <div className="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                     <div className="user-card">
                       <div className="user-avatar">
-                        <span>JD</span>
+                        <span>
+                          {getUserItem && getUserItem.user_name ?
+                            getUserItem.user_name.charAt(0) : ''}
+                        </span>
                       </div>
                       <div className="user-info">
-                        <span className="lead-text">John Doe</span>
-                        <span className="sub-text">google@mail.com</span>
+                        <span className="lead-text">{getUserItem && getUserItem.user_name}</span>
+                        <span className="sub-text">{getUserItem && getUserItem.user_email}</span>
                       </div>
                     </div>
                   </div>
                   <div className="dropdown-inner user-account-info">
-                    <h6 className="overline-title-alt">Nio Wallet Account</h6>
-                    <div className="user-balance">12.395769 <small className="currency currency-btc">BTC</small></div>
-                    <div className="user-balance-sub">Locked <span>0.344939 <span className="currency currency-btc">BTC</span></span></div>
+                    <h6 className="overline-title-alt">BTC Wallet Account</h6>
+                    <div className="user-balance">{getUserItem && getUserItem.user_btc} <small className="currency currency-btc">BTC</small></div>
+                    {/* <div className="user-balance-sub">Locked <span>0.344939 <span className="currency currency-btc">BTC</span></span></div> */}
                     <a href="#" className="link"><span>Withdraw Funds</span> <em className="icon ni ni-wallet-out"></em></a>
                   </div>
                   <div className="dropdown-inner">

@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { routes } from '../routes';
 
@@ -15,6 +16,7 @@ const menu = [
 ];
 
 export default function Sidebar({ show, onHide }) {
+  const { getUserItem } = useSelector((state) => state.user);
 
   return (
     <Fragment>
@@ -41,8 +43,8 @@ export default function Sidebar({ show, onHide }) {
                 <div className="user-account-info between-center">
                   <div className="user-account-main">
                     <h6 className="overline-title-alt">Available Balance</h6>
-                    <div className="user-balance">2.014095 <small className="currency currency-btc">BTC</small></div>
-                    <div className="user-balance-alt">18,934.84 <span className="currency currency-btc">BTC</span></div>
+                    <div className="user-balance">{getUserItem && getUserItem.user_btc} <small className="currency currency-btc">BTC</small></div>
+                    {/* <div className="user-balance-alt">18,934.84 <span className="currency currency-btc">BTC</span></div> */}
                   </div>
                   <a className="btn btn-white btn-icon btn-light"><em className="icon ni ni-line-chart"></em></a>
                 </div>
@@ -52,7 +54,7 @@ export default function Sidebar({ show, onHide }) {
                       <span className="sub-text">Profits (7d)</span>
                     </div>
                     <div className="user-account-value">
-                      <span className="lead-text">+ 0.0526 <span className="currency currency-btc">BTC</span></span>
+                      <span className="lead-text">+ {getUserItem && getUserItem.user_btc} <span className="currency currency-btc">BTC</span></span>
                       <span className="text-success ml-2">3.1% <em className="icon ni ni-arrow-long-up"></em></span>
                     </div>
                   </li>
@@ -61,7 +63,7 @@ export default function Sidebar({ show, onHide }) {
                       <span className="sub-text">Deposit in orders</span>
                     </div>
                     <div className="user-account-value">
-                      <span className="sub-text">0.005400 <span className="currency currency-btc">BTC</span></span>
+                      <span className="sub-text">{getUserItem && getUserItem.user_btc} <span className="currency currency-btc">BTC</span></span>
                     </div>
                   </li>
                 </ul>
@@ -77,11 +79,14 @@ export default function Sidebar({ show, onHide }) {
                   <div className="user-card-wrap">
                     <div className="user-card">
                       <div className="user-avatar">
-                        <span>AB</span>
+                        <span>
+                          {getUserItem && getUserItem.user_name ?
+                            getUserItem.user_name.charAt(0) : ''}
+                        </span>
                       </div>
                       <div className="user-info">
-                        <span className="lead-text">Abu Bin Ishtiyak</span>
-                        <span className="sub-text">info@softnio.com</span>
+                        <span className="lead-text">{getUserItem && getUserItem.user_name}</span>
+                        <span className="sub-text">{getUserItem && getUserItem.user_email}</span>
                       </div>
                       <div className="user-action">
                         <em className="icon ni ni-chevron-down"></em>
@@ -93,8 +98,8 @@ export default function Sidebar({ show, onHide }) {
                   <div className="user-account-info between-center">
                     <div className="user-account-main">
                       <h6 className="overline-title-alt">Available Balance</h6>
-                      <div className="user-balance">2.014095 <small className="currency currency-btc">BTC</small></div>
-                      <div className="user-balance-alt">18,934.84 <span className="currency currency-btc">BTC</span></div>
+                      <div className="user-balance">{getUserItem && getUserItem.user_btc} <small className="currency currency-btc">BTC</small></div>
+                      {/* <div className="user-balance-alt">18,934.84 <span className="currency currency-btc">BTC</span></div> */}
                     </div>
                     <a href="#" className="btn btn-icon btn-light"><em className="icon ni ni-line-chart"></em></a>
                   </div>
@@ -104,7 +109,7 @@ export default function Sidebar({ show, onHide }) {
                         <span className="sub-text">Profits (7d)</span>
                       </div>
                       <div className="user-account-value">
-                        <span className="lead-text">+ 0.0526 <span className="currency currency-btc">BTC</span></span>
+                        <span className="lead-text">+ {getUserItem && getUserItem.user_btc} <span className="currency currency-btc">BTC</span></span>
                         <span className="text-success ml-2">3.1% <em className="icon ni ni-arrow-long-up"></em></span>
                       </div>
                     </li>
@@ -113,7 +118,7 @@ export default function Sidebar({ show, onHide }) {
                         <span className="sub-text">Deposit in orders</span>
                       </div>
                       <div className="user-account-value">
-                        <span className="sub-text text-base">0.005400 <span className="currency currency-btc">BTC</span></span>
+                        <span className="sub-text text-base">{getUserItem && getUserItem.user_btc} <span className="currency currency-btc">BTC</span></span>
                       </div>
                     </li>
                   </ul>
@@ -131,6 +136,7 @@ export default function Sidebar({ show, onHide }) {
                   </ul>
                 </div>
               </div>
+
               <div className="nk-sidebar-menu">
                 <ul className="nk-menu">
                   <li className="nk-menu-heading">
@@ -138,13 +144,19 @@ export default function Sidebar({ show, onHide }) {
                   </li>
                   {menu.map(({ title, className, route }, index) => {
                     return (
+                      // <li className="nk-menu-item" key={index}>
+                      //   <Link href={route}>
+                      //     <a className="nk-menu-link">
+                      //       <span className="nk-menu-icon"><em className={className}></em></span>
+                      //       <span className="nk-menu-text">{title}</span>
+                      //     </a>
+                      //   </Link>
+                      // </li>
                       <li className="nk-menu-item" key={index}>
-                        <Link href={route}>
-                          <a className="nk-menu-link">
-                            <span className="nk-menu-icon"><em className={className}></em></span>
-                            <span className="nk-menu-text">{title}</span>
-                          </a>
-                        </Link>
+                        <a href={route} className="nk-menu-link">
+                          <span className="nk-menu-icon"><em className={className}></em></span>
+                          <span className="nk-menu-text">{title}</span>
+                        </a>
                       </li>
                     );
                   })}
