@@ -1,7 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Head from 'next/head';
 
 export default function Settings() {
+  const [password, setPassword] = useState({
+    oldPassword: '',
+    newPassword: ''
+  });
+
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    console.log(password);
+  };
 
   return (
     <Fragment>
@@ -23,35 +33,65 @@ export default function Settings() {
 
             <div className="nk-block">
               <div className="row">
-                <div className="card">
-                  <div className="card-body">
-                    <div className="row gy-4">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label className="form-label" for="phone-no">Old Password</label>
-                          <input type="text" className="form-control form-control-lg" id="phone-no" value="+880" placeholder="Phone Number" />
+                <form action="" onSubmit={submitForm}>
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="row gy-4">
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <label className="form-label" htmlFor="phone-no">Old Password</label>
+                            <input
+                              type="text"
+                              className="form-control form-control-lg"
+                              id="phone-no"
+                              value={password.oldPassword}
+                              onChange={(e) => {
+                                setPassword({
+                                  ...password,
+                                  oldPassword: e.target.value
+                                });
+                              }}
+                              placeholder="Old Password"
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label className="form-label" for="birth-day">New Password</label>
-                          <input type="text" className="form-control form-control-lg date-picker" id="birth-day" />
+                        <div className="col-md-6">
+                          <div className="form-group">
+                            <label className="form-label" htmlFor="birth-day">New Password</label>
+                            <input
+                              type="text"
+                              className="form-control form-control-lg date-picker"
+                              id="birth-day"
+                              placeholder="New Password"
+                              value={password.newPassword}
+                              onChange={(e) => {
+                                setPassword({
+                                  ...password,
+                                  newPassword: e.target.value
+                                });
+                              }}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      
-                      <div className="col-12">
-                        <ul className="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                          <li>
-                            <a href="#" className="btn btn-lg btn-primary">Update</a>
-                          </li>
-                          <li>
-                            <a href="#" data-dismiss="modal" className="link link-light">Cancel</a>
-                          </li>
-                        </ul>
+
+                        <div className="col-12">
+                          <ul className="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                            <li>
+                              <button
+                                className="btn btn-lg btn-primary text-white"
+                              >
+                                Update
+                            </button>
+                            </li>
+                            <li>
+                              <a data-dismiss="modal" className="link link-light">Cancel</a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

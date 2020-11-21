@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { routes } from '../routes';
 
 export default function Header({ onShow }) {
@@ -22,13 +23,17 @@ export default function Header({ onShow }) {
           <div className="nk-header-news d-none d-xl-block">
             <div className="nk-news-list">
               <a className="nk-news-item" href="#">
-                <div className="nk-news-icon">
-                  <em className="icon ni ni-card-view"></em>
-                </div>
-                <div className="nk-news-text">
-                  <p>Do you know the latest update of 2019? <span> A overview of our is now available on YouTube</span></p>
-                  <em className="icon ni ni-external"></em>
-                </div>
+                {false && (
+                  <div className="nk-news-icon">
+                    <em className="icon ni ni-card-view"></em>
+                  </div>
+                )}
+                {false && (
+                  <div className="nk-news-text">
+                    <p>Do you know the latest update of 2019? <span> A overview of our is now available on YouTube</span></p>
+                    <em className="icon ni ni-external"></em>
+                  </div>
+                )}
               </a>
             </div>
           </div>
@@ -50,7 +55,7 @@ export default function Header({ onShow }) {
                     </div>
                     <div className="user-info d-none d-md-block">
                       <div className="user-status user-status-unverified">Unverified</div>
-                      <div className="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                      <div className="user-name dropdown-indicator">John Doe</div>
                     </div>
                   </div>
                 </a>
@@ -58,11 +63,11 @@ export default function Header({ onShow }) {
                   <div className="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                     <div className="user-card">
                       <div className="user-avatar">
-                        <span>AB</span>
+                        <span>JD</span>
                       </div>
                       <div className="user-info">
-                        <span className="lead-text">Abu Bin Ishtiyak</span>
-                        <span className="sub-text">info@softnio.com</span>
+                        <span className="lead-text">John Doe</span>
+                        <span className="sub-text">google@mail.com</span>
                       </div>
                     </div>
                   </div>
@@ -74,14 +79,35 @@ export default function Header({ onShow }) {
                   </div>
                   <div className="dropdown-inner">
                     <ul className="link-list">
-                      <li><a href="html/crypto/profile.html"><em className="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                      <li><a href="html/crypto/profile-security.html"><em className="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
-                      <li><a href="html/crypto/profile-activity.html"><em className="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
+                      <li>
+                        <Link href={routes.profile.path}>
+                          <a>
+                            <em className="icon ni ni-user-alt"></em>
+                            <span>View Profile</span>
+                          </a>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href={routes.settings.path}>
+                          <a>
+                            <em className="icon ni ni-setting-alt"></em>
+                            <span>Account Setting</span>
+                          </a>
+                        </Link>
+                      </li>
+                      {false && (
+                        <li>
+                          <a href="html/crypto/profile-activity.html">
+                            <em className="icon ni ni-activity-alt"></em>
+                            <span>Login Activity</span>
+                          </a>
+                        </li>
+                      )}
                     </ul>
                   </div>
                   <div className="dropdown-inner">
                     <ul className="link-list">
-                      <li><a href="#"><em className="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                      <li><a href={routes.entry.path}><em className="icon ni ni-signout"></em><span>Sign out</span></a></li>
                     </ul>
                   </div>
                 </div>

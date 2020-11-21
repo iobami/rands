@@ -24,7 +24,7 @@ export default function Sidebar({ show, onHide }) {
       >
         <div className="nk-sidebar-element nk-sidebar-head">
           <div className="nk-sidebar-brand">
-            <a href="html/crypto/index.html" className="logo-link nk-sidebar-logo">
+            <a className="logo-link nk-sidebar-logo">
               <img className="logo-light logo-img" src="./images/logo.png" srcSet="./images/logo2x.png 2x" alt="logo" />
               <img className="logo-dark logo-img" src="./images/logo-dark.png" srcSet="./images/logo-dark2x.png 2x" alt="logo-dark" />
               <span className="nio-version">Crypto</span>
@@ -44,7 +44,7 @@ export default function Sidebar({ show, onHide }) {
                     <div className="user-balance">2.014095 <small className="currency currency-btc">BTC</small></div>
                     <div className="user-balance-alt">18,934.84 <span className="currency currency-btc">BTC</span></div>
                   </div>
-                  <a href="#" className="btn btn-white btn-icon btn-light"><em className="icon ni ni-line-chart"></em></a>
+                  <a className="btn btn-white btn-icon btn-light"><em className="icon ni ni-line-chart"></em></a>
                 </div>
                 <ul className="user-account-data gy-1">
                   <li>
@@ -150,86 +150,90 @@ export default function Sidebar({ show, onHide }) {
                   })}
                 </ul>
               </div>
-              <div className="nk-sidebar-widget">
-                <div className="widget-title">
-                  <h6 className="overline-title">Crypto Accounts <span>(4)</span></h6>
-                  <a href="#" className="link">View All</a>
-                </div>
-                <ul className="wallet-list">
-                  <li className="wallet-item">
-                    <a href="#">
-                      <div className="wallet-icon"><em className="icon ni ni-sign-kobo"></em></div>
-                      <div className="wallet-text">
-                        <h6 className="wallet-name">NioWallet</h6>
-                        <span className="wallet-balance">30.959040 <span className="currency currency-nio">NIO</span></span>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="wallet-item">
-                    <a href="#">
-                      <div className="wallet-icon"><em className="icon ni ni-sign-btc"></em></div>
-                      <div className="wallet-text">
-                        <h6 className="wallet-name">Bitcoin Wallet</h6>
-                        <span className="wallet-balance">0.0495950 <span className="currency currency-btc">BTC</span></span>
-                      </div>
-                    </a>
-                  </li>
-                  <li className="wallet-item wallet-item-add">
-                    <a href="#">
-                      <div className="wallet-icon"><em className="icon ni ni-plus"></em></div>
-                      <div className="wallet-text">
-                        <h6 className="wallet-name">Add another wallet</h6>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="nk-sidebar-footer">
-                <ul className="nk-menu nk-menu-footer">
-                  <li className="nk-menu-item">
-                    <a href="#" className="nk-menu-link">
-                      <span className="nk-menu-icon"><em className="icon ni ni-help-alt"></em></span>
-                      <span className="nk-menu-text">Support</span>
-                    </a>
-                  </li>
-                  <li className="nk-menu-item ml-auto">
-                    <div className="dropup">
-                      <a href="#" className="nk-menu-link dropdown-indicator has-indicator" data-toggle="dropdown" data-offset="0,10">
-                        <span className="nk-menu-icon"><em className="icon ni ni-globe"></em></span>
-                        <span className="nk-menu-text">English</span>
+              {false && (
+                <div className="nk-sidebar-widget">
+                  <div className="widget-title">
+                    <h6 className="overline-title">Crypto Accounts <span>(4)</span></h6>
+                    <a href="#" className="link">View All</a>
+                  </div>
+                  <ul className="wallet-list">
+                    <li className="wallet-item">
+                      <a href="#">
+                        <div className="wallet-icon"><em className="icon ni ni-sign-kobo"></em></div>
+                        <div className="wallet-text">
+                          <h6 className="wallet-name">NioWallet</h6>
+                          <span className="wallet-balance">30.959040 <span className="currency currency-nio">NIO</span></span>
+                        </div>
                       </a>
-                      <div className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                        <ul className="language-list">
-                          <li>
-                            <a href="#" className="language-item">
-                              <img src="./images/flags/english.png" alt="" className="language-flag" />
-                              <span className="language-name">English</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" className="language-item">
-                              <img src="./images/flags/spanish.png" alt="" className="language-flag" />
-                              <span className="language-name">Español</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" className="language-item">
-                              <img src="./images/flags/french.png" alt="" className="language-flag" />
-                              <span className="language-name">Français</span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" className="language-item">
-                              <img src="./images/flags/turkey.png" alt="" className="language-flag" />
-                              <span className="language-name">Türkçe</span>
-                            </a>
-                          </li>
-                        </ul>
+                    </li>
+                    <li className="wallet-item">
+                      <a href="#">
+                        <div className="wallet-icon"><em className="icon ni ni-sign-btc"></em></div>
+                        <div className="wallet-text">
+                          <h6 className="wallet-name">Bitcoin Wallet</h6>
+                          <span className="wallet-balance">0.0495950 <span className="currency currency-btc">BTC</span></span>
+                        </div>
+                      </a>
+                    </li>
+                    <li className="wallet-item wallet-item-add">
+                      <a href="#">
+                        <div className="wallet-icon"><em className="icon ni ni-plus"></em></div>
+                        <div className="wallet-text">
+                          <h6 className="wallet-name">Add another wallet</h6>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              )}
+              {false && (
+                <div className="nk-sidebar-footer">
+                  <ul className="nk-menu nk-menu-footer">
+                    <li className="nk-menu-item">
+                      <a href="#" className="nk-menu-link">
+                        <span className="nk-menu-icon"><em className="icon ni ni-help-alt"></em></span>
+                        <span className="nk-menu-text">Support</span>
+                      </a>
+                    </li>
+                    <li className="nk-menu-item ml-auto">
+                      <div className="dropup">
+                        <a href="#" className="nk-menu-link dropdown-indicator has-indicator" data-toggle="dropdown" data-offset="0,10">
+                          <span className="nk-menu-icon"><em className="icon ni ni-globe"></em></span>
+                          <span className="nk-menu-text">English</span>
+                        </a>
+                        <div className="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                          <ul className="language-list">
+                            <li>
+                              <a href="#" className="language-item">
+                                <img src="./images/flags/english.png" alt="" className="language-flag" />
+                                <span className="language-name">English</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" className="language-item">
+                                <img src="./images/flags/spanish.png" alt="" className="language-flag" />
+                                <span className="language-name">Español</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" className="language-item">
+                                <img src="./images/flags/french.png" alt="" className="language-flag" />
+                                <span className="language-name">Français</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#" className="language-item">
+                                <img src="./images/flags/turkey.png" alt="" className="language-flag" />
+                                <span className="language-name">Türkçe</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
