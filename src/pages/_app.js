@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter();
 
-  const authRoutes = [routes.entry.path, routes.register.path]
+  const authRoutes = [routes.entry.path, routes.register.path, routes.forgotPassword.path]
 
   useEffect(() => {
     setShowSideBar(false);

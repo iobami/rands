@@ -1,16 +1,27 @@
 import React, { Fragment, useState } from 'react';
 import Head from 'next/head';
+import { Banner, SubmitButton } from '../components';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { changePasswordAction } from '../redux/entities/auth';
 
 export default function Settings() {
+  const dispatch = useDispatch();
+  const { changePasswordItem, isLoading } = useSelector((state) => state.auth);
+
   const [password, setPassword] = useState({
     oldPassword: '',
     newPassword: ''
   });
 
+  const reset = () => dispatch(changePasswordAction.store(null));
+
   const submitForm = (e) => {
     e.preventDefault();
+    reset();
 
-    console.log(password);
+    dispatch(changePasswordAction.loadingState(true));
+    dispatch(changePasswordAction.loading(password));
   };
 
   return (
@@ -77,16 +88,25 @@ export default function Settings() {
                         <div className="col-12">
                           <ul className="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
                             <li>
-                              <button
-                                className="btn btn-lg btn-primary text-white"
-                              >
-                                Update
-                            </button>
+                              <SubmitButton title="Update" isLoading={isLoading} width="150px" />
                             </li>
                             <li>
-                              <a data-dismiss="modal" className="link link-light">Cancel</a>
+                              {false && (
+                                <a data-dismiss="modal" className="link link-light">Cancel</a>
+                              )}
                             </li>
                           </ul>
+                        </div>
+
+                        <div className="col-12 pl-0 pr-0 mt-2">
+                          <Banner
+                            show={changePasswordItem}
+                            success={changePasswordItem && changePasswordItem.status === 'success'}
+                            error={changePasswordItem && changePasswordItem.status === 'error'}
+                            title={changePasswordItem && changePasswordItem.status === 'success' ? 'Success !' : 'Error !'}
+                            message={changePasswordItem && changePasswordItem.message}
+                            reset={reset}
+                          />
                         </div>
                       </div>
                     </div>

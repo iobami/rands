@@ -9,6 +9,7 @@ import namespaces, { namespaceActions } from '../namespaces';
 import { getItem, decryptKey } from '../../services';
 
 export const getUserAction = namespaceActions(namespaces.USER);
+export const changePasswordAction = namespaceActions(namespaces.USER);
 
 export const reducer = handleActions(
   {

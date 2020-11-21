@@ -121,6 +121,17 @@ export default function Login() {
                       Need an account? <span className="text-dark">Register</span>
                     </a>
                   </Link>
+
+                  <Link href={routes.forgotPassword.path}>
+                    <a
+                      href={routes.forgotPassword.path}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="d-block mt-3 text-muted"
+                    >
+                      <span className="text-dark">forgot password?</span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>

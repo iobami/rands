@@ -38,3 +38,9 @@ body,
 .nk-sidebar-content {
   overflow-y: auto;
 }
+
+.nk-strecth-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
