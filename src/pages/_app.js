@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 import { useStore } from '../redux/store';
 import { AuthLayout, DashboardLayout } from '../layouts';
-import { TransferModal } from '../components';
+import { TransferModal, WalletDetailModal } from '../components';
 import { routes } from '../routes';
 
 function MyApp({ Component, pageProps }) {
@@ -12,8 +12,12 @@ function MyApp({ Component, pageProps }) {
   const [showSideBar, setShowSideBar] = useState(false);
 
   const [show, setShow] = useState(false);
-  const showTransferModal = () => setShow(true);
+  const showTransferModal = () => setShow(false);
   const hideTransferModal = () => setShow(false);
+
+  const [showWallet, setShowWallet] = useState(false);
+  const showWalletModal = () => setShowWallet(true);
+  const hideWalletModal = () => setShowWallet(false);
 
   const router = useRouter();
 
@@ -50,14 +54,22 @@ function MyApp({ Component, pageProps }) {
             showSideBar={showSideBar}
             setShowSideBar={setShowSideBar}
             showTransferModal={showTransferModal}
+            showWalletModal={showWalletModal}
           >
             <TransferModal
               show={show}
               handleClose={hideTransferModal}
             />
+
+            <WalletDetailModal
+              show={showWallet}
+              handleClose={hideWalletModal}
+            />
+
             <Component
               {...pageProps}
               showTransferModal={showTransferModal}
+              showWalletModal={showWalletModal}
             />
           </DashboardLayout>
         )}

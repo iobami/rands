@@ -6,7 +6,7 @@ import { getRecentTransactionsAction } from '../redux/entities/transactions';
 import { TransactionsTable } from '../components';
 import { routes } from '../routes';
 
-export default function Overview({ showTransferModal }) {
+export default function Overview({ showTransferModal, showWalletModal }) {
   const dispatch = useDispatch();
   const { getUserItem } = useSelector((state) => state.user);
   const { getRecentTransactionsItem } = useSelector((state) => state.transactions);
@@ -18,7 +18,7 @@ export default function Overview({ showTransferModal }) {
   return (
     <Fragment>
       <Head>
-        <title>Oveview - Crypto | DashLite Admin Template</title>
+        <title>Overview - Crypto | DashLite Admin Template</title>
       </Head>
 
       <div className="nk-content nk-content-fluid">
@@ -87,7 +87,7 @@ export default function Overview({ showTransferModal }) {
                               <span>Send</span>
                             </a>
                           </li>
-                          <li>
+                          <li onClick={showWalletModal}>
                             <a className="btn">
                               <em className="icon ni ni-arrow-down-left"></em>
                               <span>Receive</span>
