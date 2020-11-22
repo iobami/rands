@@ -69,13 +69,13 @@ export default function Sidebar({ show, onHide }) {
                 </ul>
                 <div className="user-account-actions">
                   <ul className="g-3">
-                    <li><a href="#" className="btn btn-lg btn-primary"><span>Deposit</span></a></li>
-                    <li><a href="#" className="btn btn-lg btn-warning"><span>Withdraw</span></a></li>
+                    <li><a className="btn btn-lg btn-primary text-white"><span>Deposit</span></a></li>
+                    <li><a className="btn btn-lg btn-warning text-white"><span>Withdraw</span></a></li>
                   </ul>
                 </div>
               </div>
               <div className="nk-sidebar-widget nk-sidebar-widget-full d-xl-none pt-0">
-                <a className="nk-profile-toggle toggle-expand" data-target="sidebarProfile" href="#">
+                <a className="nk-profile-toggle toggle-expand" data-target="sidebarProfile">
                   <div className="user-card-wrap">
                     <div className="user-card">
                       <div className="user-avatar">
@@ -89,7 +89,7 @@ export default function Sidebar({ show, onHide }) {
                         <span className="sub-text">{getUserItem && getUserItem.user_email}</span>
                       </div>
                       <div className="user-action">
-                        <em className="icon ni ni-chevron-down"></em>
+                        {/* <em className="icon ni ni-chevron-down"></em> */}
                       </div>
                     </div>
                   </div>

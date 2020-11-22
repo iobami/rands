@@ -10,8 +10,10 @@ export default {
 
   USER: 'USER',
   USER_KEY: 'USER-OIJORBJKSE-STORE',
-
   USER_TRANSACTIONS: 'USER_TRANSACTIONS',
+  RECENT_USER_TRANSACTIONS: 'RECENT_USER_TRANSACTIONS',
+
+  BTC_TRANSFER: 'BTC_TRANSFER',
 };
 
 export const namespaceActions = (namespace) => {

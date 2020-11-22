@@ -1,15 +1,32 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Head from 'next/head';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRecentTransactionsAction } from '../redux/entities/transactions';
+
+import { TransactionsTable, TransferModal } from '../components';
 
 export default function Overview() {
+  const dispatch = useDispatch();
   const { getUserItem } = useSelector((state) => state.user);
+  const { getRecentTransactionsItem } = useSelector((state) => state.transactions);
+
+  useEffect(() => {
+    dispatch(getRecentTransactionsAction.loading());
+  }, []);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
 
   return (
     <Fragment>
       <Head>
         <title>Oveview - Crypto | DashLite Admin Template</title>
       </Head>
+
+      <TransferModal
+        show={show}
+        handleClose={handleClose}
+      />
 
       <div className="nk-content nk-content-fluid">
         <div className="container-xl wide-lg">
@@ -26,7 +43,9 @@ export default function Overview() {
                 <div className="nk-block-head-content">
                   <ul className="nk-block-tools gx-3">
                     <li className="opt-menu-md dropdown">
-                      <a href="#" className="btn btn-dim btn-outline-light btn-icon" data-toggle="dropdown"><em className="icon ni ni-setting"></em></a>
+                      <a className="btn btn-dim btn-outline-light btn-icon" data-toggle="dropdown">
+                        <em className="icon ni ni-setting"></em>
+                      </a>
                       <div className="dropdown-menu  dropdown-menu-xs dropdown-menu-right">
                         <ul className="link-list-plain sm">
                           <li><a href="#">Display</a></li>
@@ -34,8 +53,13 @@ export default function Overview() {
                         </ul>
                       </div>
                     </li>
-                    <li><a href="#" className="btn btn-primary"><span>Send</span> <em className="icon ni ni-arrow-long-right"></em></a></li>
-                    <li><a href="#" className="btn btn-dim btn-outline-light"><span>Withdraw</span> <em className="icon ni ni-arrow-long-right"></em></a></li>
+                    <li onClick={() => setShow(true)}>
+                      <a className="btn btn-primary text-white">
+                        <span>Send</span>
+                        <em className="icon ni ni-arrow-long-right"></em>
+                      </a>
+                    </li>
+                    <li><a className="btn btn-dim btn-outline-light"><span>Withdraw</span> <em className="icon ni ni-arrow-long-right"></em></a></li>
                   </ul>
                 </div>
               </div>
@@ -51,7 +75,7 @@ export default function Overview() {
                   <div className="card card-bordered is-dark">
                     <div className="nk-wgw">
                       <div className="nk-wgw-inner">
-                        <a className="nk-wgw-name" href="html/crypto/wallet-bitcoin.html">
+                        <a className="nk-wgw-name">
                           <div className="nk-wgw-icon">
                             <em className="icon ni ni-sign-btc"></em>
                           </div>
@@ -64,9 +88,24 @@ export default function Overview() {
                       </div>
                       <div className="nk-wgw-actions">
                         <ul>
-                          <li><a><em className="icon ni ni-arrow-up-right"></em> <span>Send</span></a></li>
-                          <li><a><em className="icon ni ni-arrow-down-left"></em><span>Receive</span></a></li>
-                          <li><a><em className="icon ni ni-arrow-to-right"></em><span>Withdraw</span></a></li>
+                          <li onClick={() => setShow(true)}>
+                            <a className="btn">
+                              <em className="icon ni ni-arrow-up-right"></em>
+                              <span>Send</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a className="btn">
+                              <em className="icon ni ni-arrow-down-left"></em>
+                              <span>Receive</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a className="btn">
+                              <em className="icon ni ni-arrow-to-right"></em>
+                              <span>Withdraw</span>
+                            </a>
+                          </li>
                         </ul>
                       </div>
                       <div className="nk-wgw-more dropdown">
@@ -86,28 +125,11 @@ export default function Overview() {
               </div>
             </div>
             <div className="nk-block nk-block-lg">
-              <div className="nk-block-head-sm">
-                <div className="nk-block-head-content">
-                  <h5 className="nk-block-title title">Update Accounts</h5>
-                </div>
-              </div>
-              <div className="row g-gs">
-                <div className="col-md-6 col-lg-4">
-                  <div className="card card-bordered dashed h-100">
-                    <div className="nk-wgw-add">
-                      <div className="nk-wgw-inner">
-                        <a href="#">
-                          <div className="add-icon">
-                            <em className="icon ni ni-plus"></em>
-                          </div>
-                          <h6 className="title">Add New Wallet</h6>
-                        </a>
-                        <span className="sub-text">You can add your more wallet in your account to manage separetly.</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <TransactionsTable
+                title="Transactions"
+                description="Here is the list of your recent transactions"
+                data={getRecentTransactionsItem && getRecentTransactionsItem.data || []}
+              />
             </div>
           </div>
         </div>

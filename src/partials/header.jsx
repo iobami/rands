@@ -89,7 +89,7 @@ export default function Header({ onShow }) {
                     <h6 className="overline-title-alt">BTC Wallet Account</h6>
                     <div className="user-balance">{getUserItem && getUserItem.user_btc} <small className="currency currency-btc">BTC</small></div>
                     {/* <div className="user-balance-sub">Locked <span>0.344939 <span className="currency currency-btc">BTC</span></span></div> */}
-                    <a href="#" className="link"><span>Withdraw Funds</span> <em className="icon ni ni-wallet-out"></em></a>
+                    <a className="link"><span>Withdraw Funds</span> <em className="icon ni ni-wallet-out"></em></a>
                   </div>
                   <div className="dropdown-inner">
                     <ul className="link-list">
@@ -145,60 +145,20 @@ export default function Header({ onShow }) {
                   </div>
                   <div className="dropdown-body">
                     <div className="nk-notification">
-                      <div className="nk-notification-item dropdown-inner">
-                        <div className="nk-notification-icon">
-                          <em className="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
-                        </div>
-                        <div className="nk-notification-content">
-                          <div className="nk-notification-text">You have requested to <span>Widthdrawl</span></div>
-                          <div className="nk-notification-time">2 hrs ago</div>
-                        </div>
-                      </div>
-                      <div className="nk-notification-item dropdown-inner">
-                        <div className="nk-notification-icon">
-                          <em className="icon icon-circle bg-success-dim ni ni-curve-down-left"></em>
-                        </div>
-                        <div className="nk-notification-content">
-                          <div className="nk-notification-text">Your <span>Deposit Order</span> is placed</div>
-                          <div className="nk-notification-time">2 hrs ago</div>
-                        </div>
-                      </div>
-                      <div className="nk-notification-item dropdown-inner">
-                        <div className="nk-notification-icon">
-                          <em className="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
-                        </div>
-                        <div className="nk-notification-content">
-                          <div className="nk-notification-text">You have requested to <span>Widthdrawl</span></div>
-                          <div className="nk-notification-time">2 hrs ago</div>
-                        </div>
-                      </div>
-                      <div className="nk-notification-item dropdown-inner">
-                        <div className="nk-notification-icon">
-                          <em className="icon icon-circle bg-success-dim ni ni-curve-down-left"></em>
-                        </div>
-                        <div className="nk-notification-content">
-                          <div className="nk-notification-text">Your <span>Deposit Order</span> is placed</div>
-                          <div className="nk-notification-time">2 hrs ago</div>
-                        </div>
-                      </div>
-                      <div className="nk-notification-item dropdown-inner">
-                        <div className="nk-notification-icon">
-                          <em className="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
-                        </div>
-                        <div className="nk-notification-content">
-                          <div className="nk-notification-text">You have requested to <span>Widthdrawl</span></div>
-                          <div className="nk-notification-time">2 hrs ago</div>
-                        </div>
-                      </div>
-                      <div className="nk-notification-item dropdown-inner">
-                        <div className="nk-notification-icon">
-                          <em className="icon icon-circle bg-success-dim ni ni-curve-down-left"></em>
-                        </div>
-                        <div className="nk-notification-content">
-                          <div className="nk-notification-text">Your <span>Deposit Order</span> is placed</div>
-                          <div className="nk-notification-time">2 hrs ago</div>
-                        </div>
-                      </div>
+                      {[1, 2, 3].map((item, index) => {
+                        return (
+                          <div className="nk-notification-item dropdown-inner" key={index}>
+                            <div className="nk-notification-icon">
+                              <em className="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
+                            </div>
+                            <div className="nk-notification-content">
+                              <div className="nk-notification-text">
+                                You have requested to <span>Widthdrawl</span></div>
+                              <div className="nk-notification-time">{item} hrs ago</div>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className="dropdown-foot center">

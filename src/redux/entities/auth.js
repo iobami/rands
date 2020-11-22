@@ -145,7 +145,7 @@ function changePasswordEpic(action$) {
         url: proxy ?
           `${proxy}${process.env.NEXT_PUBLIC_API_URL}/passwordchange.php` :
           `${process.env.NEXT_PUBLIC_API_URL}/passwordchange.php`,
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
