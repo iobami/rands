@@ -15,7 +15,7 @@ const menu = [
   { title: 'Settings', className: 'icon ni ni-setting', route: routes.settings.path },
 ];
 
-export default function Sidebar({ show, onHide }) {
+export default function Sidebar({ show, onHide, showTransferModal }) {
   const { getUserItem } = useSelector((state) => state.user);
 
   return (
@@ -69,7 +69,7 @@ export default function Sidebar({ show, onHide }) {
                 </ul>
                 <div className="user-account-actions">
                   <ul className="g-3">
-                    <li><a className="btn btn-lg btn-primary text-white"><span>Deposit</span></a></li>
+                    <li onClick={showTransferModal}><a className="btn btn-lg btn-primary text-white"><span>Deposit</span></a></li>
                     <li><a className="btn btn-lg btn-warning text-white"><span>Withdraw</span></a></li>
                   </ul>
                 </div>

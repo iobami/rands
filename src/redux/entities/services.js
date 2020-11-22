@@ -6,7 +6,6 @@ import { switchMap, map, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
 import namespaces, { namespaceActions } from '../namespaces';
-import { getItem, decryptKey } from '../../services';
 
 export const rateAction = namespaceActions(namespaces.BTC_RATE);
 
@@ -34,19 +33,15 @@ function rateEpic(action$) {
   return action$.pipe(
     ofType(rateAction.loading),
     switchMap(() => {
-      const encNamespace = getItem(namespaces.USER_KEY);
-      const user = decryptKey(encNamespace ? encNamespace.key : '');
-
       const proxy = process.env.NEXT_PUBLIC_CORS_URL;
       return ajax({
         url: proxy ?
-          `${proxy}${process.env.NEXT_PUBLIC_API_URL}/rate.php` :
-          `${process.env.NEXT_PUBLIC_API_URL}/rate.php`,
-        method: 'POST',
+          'https://blockchain.info/ticker' :
+          'https://blockchain.info/ticker',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: user
+        }
       }).pipe(
         map(({ response }) => rateAction.store(response)),
         catchError(error => {

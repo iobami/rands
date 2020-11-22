@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import { Banner, SubmitButton } from '../components';
 
@@ -8,8 +8,13 @@ import { transferAction } from '../redux/entities/transfer';
 export default function TransferModal({ show, handleClose: close }) {
   const dispatch = useDispatch();
   const { transferItem, isLoading } = useSelector((state) => state.transfer);
+  const { rateItem } = useSelector((state) => state.services);
 
-  const rate = 6650;
+  const [rate, setRate] = useState(6650);
+
+  useEffect(() => {
+    if (rateItem && rateItem.USD) setRate(rateItem.USD.sell || 18250)
+  }, [rateItem]);
 
   const handleClose = () => {
     if (!isLoading) close();

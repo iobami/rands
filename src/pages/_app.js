@@ -4,11 +4,16 @@ import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
 import { useStore } from '../redux/store';
 import { AuthLayout, DashboardLayout } from '../layouts';
+import { TransferModal } from '../components';
 import { routes } from '../routes';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   const [showSideBar, setShowSideBar] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const showTransferModal = () => setShow(true);
+  const hideTransferModal = () => setShow(false);
 
   const router = useRouter();
 
@@ -41,8 +46,19 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </AuthLayout>
       ) : (
-          <DashboardLayout showSideBar={showSideBar} setShowSideBar={setShowSideBar}>
-            <Component {...pageProps} />
+          <DashboardLayout
+            showSideBar={showSideBar}
+            setShowSideBar={setShowSideBar}
+            showTransferModal={showTransferModal}
+          >
+            <TransferModal
+              show={show}
+              handleClose={hideTransferModal}
+            />
+            <Component
+              {...pageProps}
+              showTransferModal={showTransferModal}
+            />
           </DashboardLayout>
         )}
     </Provider>

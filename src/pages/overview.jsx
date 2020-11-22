@@ -1,11 +1,12 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecentTransactionsAction } from '../redux/entities/transactions';
 
-import { TransactionsTable, TransferModal } from '../components';
+import { TransactionsTable } from '../components';
+import { routes } from '../routes';
 
-export default function Overview() {
+export default function Overview({ showTransferModal }) {
   const dispatch = useDispatch();
   const { getUserItem } = useSelector((state) => state.user);
   const { getRecentTransactionsItem } = useSelector((state) => state.transactions);
@@ -14,19 +15,11 @@ export default function Overview() {
     dispatch(getRecentTransactionsAction.loading());
   }, []);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-
   return (
     <Fragment>
       <Head>
         <title>Oveview - Crypto | DashLite Admin Template</title>
       </Head>
-
-      <TransferModal
-        show={show}
-        handleClose={handleClose}
-      />
 
       <div className="nk-content nk-content-fluid">
         <div className="container-xl wide-lg">
@@ -48,12 +41,12 @@ export default function Overview() {
                       </a>
                       <div className="dropdown-menu  dropdown-menu-xs dropdown-menu-right">
                         <ul className="link-list-plain sm">
-                          <li><a href="#">Display</a></li>
-                          <li><a href="#">Show</a></li>
+                          {/* <li><a>Display</a></li> */}
+                          <li><a href={routes.settings.path}>Show</a></li>
                         </ul>
                       </div>
                     </li>
-                    <li onClick={() => setShow(true)}>
+                    <li onClick={showTransferModal}>
                       <a className="btn btn-primary text-white">
                         <span>Send</span>
                         <em className="icon ni ni-arrow-long-right"></em>
@@ -88,7 +81,7 @@ export default function Overview() {
                       </div>
                       <div className="nk-wgw-actions">
                         <ul>
-                          <li onClick={() => setShow(true)}>
+                          <li onClick={showTransferModal}>
                             <a className="btn">
                               <em className="icon ni ni-arrow-up-right"></em>
                               <span>Send</span>
@@ -108,17 +101,19 @@ export default function Overview() {
                           </li>
                         </ul>
                       </div>
-                      <div className="nk-wgw-more dropdown">
-                        <a href="#" className="btn btn-icon btn-trigger" data-toggle="dropdown"><em className="icon ni ni-more-h"></em></a>
-                        <div className="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-                          <ul className="link-list-plain sm">
-                            <li><a href="#">Details</a></li>
-                            <li><a href="#">Edit</a></li>
-                            <li><a href="#">Delete</a></li>
-                            <li><a href="#">Make Default</a></li>
-                          </ul>
+                      {false && (
+                        <div className="nk-wgw-more dropdown">
+                          <a href="#" className="btn btn-icon btn-trigger" data-toggle="dropdown"><em className="icon ni ni-more-h"></em></a>
+                          <div className="dropdown-menu dropdown-menu-xs dropdown-menu-right">
+                            <ul className="link-list-plain sm">
+                              <li><a href="#">Details</a></li>
+                              <li><a href="#">Edit</a></li>
+                              <li><a href="#">Delete</a></li>
+                              <li><a href="#">Make Default</a></li>
+                            </ul>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>

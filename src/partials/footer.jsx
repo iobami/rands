@@ -5,14 +5,17 @@ export default function Footer() {
     <div className="nk-footer nk-footer-fluid">
       <div className="container-fluid">
         <div className="nk-footer-wrap">
-          <div className="nk-footer-copyright"> &copy; {new Date().getFullYear()} DashLite. Template by <a href="#">Softnio</a>
+          <div className="nk-footer-copyright">
+             &copy; {new Date().getFullYear()} DashLite
           </div>
           <div className="nk-footer-links">
-            <ul className="nav nav-sm">
-              <li className="nav-item"><a className="nav-link" href="#">Terms</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Privacy</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Help</a></li>
-            </ul>
+            {false && (
+              <ul className="nav nav-sm">
+                <li className="nav-item"><a className="nav-link">Terms</a></li>
+                <li className="nav-item"><a className="nav-link">Privacy</a></li>
+                <li className="nav-item"><a className="nav-link">Help</a></li>
+              </ul>
+            )}
           </div>
         </div>
       </div>
