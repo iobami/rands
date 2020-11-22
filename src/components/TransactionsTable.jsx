@@ -40,7 +40,7 @@ export default function TransactionsTable({ title, description, data, responseMe
                       return (
                         <div className="nk-tb-item" key={index}>
                           <div className="nk-tb-col">
-                            <span className="tb-lead"><a href="#">{item.amount}</a></span>
+                            <span className="tb-lead"><a>{item.amount}</a></span>
                           </div>
                           <div className="nk-tb-col">
                             <span className="tb-sub tb-amount">
@@ -61,16 +61,20 @@ export default function TransactionsTable({ title, description, data, responseMe
                             </span>
                           </div>
                           <div className="nk-tb-col nk-tb-col-action">
-                            <div className="dropdown">
-                              <a className="text-soft dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em className="icon ni ni-more-h"></em></a>
-                              <div className="dropdown-menu dropdown-menu-right dropdown-menu-xs">
-                                <ul className="link-list-plain">
-                                  <li><a href="#">View</a></li>
-                                  <li><a href="#">Invoice</a></li>
-                                  <li><a href="#">Notify</a></li>
-                                </ul>
+                            {false && (
+                              <div className="dropdown">
+                                <a className="text-soft dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown">
+                                  <em className="icon ni ni-more-h"></em>
+                                </a>
+                                <div className="dropdown-menu dropdown-menu-right dropdown-menu-xs">
+                                  <ul className="link-list-plain">
+                                    <li><a href="#">View</a></li>
+                                    <li><a href="#">Invoice</a></li>
+                                    <li><a href="#">Notify</a></li>
+                                  </ul>
+                                </div>
                               </div>
-                            </div>
+                            )}
                           </div>
                         </div>
                       );

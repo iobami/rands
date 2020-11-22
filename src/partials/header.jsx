@@ -126,46 +126,48 @@ export default function Header({ onShow }) {
                   </div>
                 </div>
               </li>
-              <li className={showNotifications ? 'dropdown notification-dropdown mr-n1 show' : 'dropdown notification-dropdown mr-n1'}>
-                <a
-                  onClick={() => {
-                    setShowMiniProfile(false);
-                    setShowNotifications(!showNotifications);
-                  }}
-                  className="dropdown-toggle nk-quick-nav-icon"
-                  data-toggle="dropdown"
-                  aria-expanded={showNotifications}
-                >
-                  <div className="icon-status icon-status-info"><em className="icon ni ni-bell"></em></div>
-                </a>
-                <div className={showNotifications ? 'dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1 show' : 'dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1'}>
-                  <div className="dropdown-head">
-                    <span className="sub-title nk-dropdown-title">Notifications</span>
-                    <a href="#">Mark All as Read</a>
-                  </div>
-                  <div className="dropdown-body">
-                    <div className="nk-notification">
-                      {[1, 2, 3].map((item, index) => {
-                        return (
-                          <div className="nk-notification-item dropdown-inner" key={index}>
-                            <div className="nk-notification-icon">
-                              <em className="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
+              {false && (
+                <li className={showNotifications ? 'dropdown notification-dropdown mr-n1 show' : 'dropdown notification-dropdown mr-n1'}>
+                  <a
+                    onClick={() => {
+                      setShowMiniProfile(false);
+                      setShowNotifications(!showNotifications);
+                    }}
+                    className="dropdown-toggle nk-quick-nav-icon"
+                    data-toggle="dropdown"
+                    aria-expanded={showNotifications}
+                  >
+                    <div className="icon-status icon-status-info"><em className="icon ni ni-bell"></em></div>
+                  </a>
+                  <div className={showNotifications ? 'dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1 show' : 'dropdown-menu dropdown-menu-xl dropdown-menu-right dropdown-menu-s1'}>
+                    <div className="dropdown-head">
+                      <span className="sub-title nk-dropdown-title">Notifications</span>
+                      <a href="#">Mark All as Read</a>
+                    </div>
+                    <div className="dropdown-body">
+                      <div className="nk-notification">
+                        {[1, 2, 3].map((item, index) => {
+                          return (
+                            <div className="nk-notification-item dropdown-inner" key={index}>
+                              <div className="nk-notification-icon">
+                                <em className="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
+                              </div>
+                              <div className="nk-notification-content">
+                                <div className="nk-notification-text">
+                                  You have requested to <span>Widthdrawl</span></div>
+                                <div className="nk-notification-time">{item} hrs ago</div>
+                              </div>
                             </div>
-                            <div className="nk-notification-content">
-                              <div className="nk-notification-text">
-                                You have requested to <span>Widthdrawl</span></div>
-                              <div className="nk-notification-time">{item} hrs ago</div>
-                            </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className="dropdown-foot center">
+                      <a href="#">View All</a>
                     </div>
                   </div>
-                  <div className="dropdown-foot center">
-                    <a href="#">View All</a>
-                  </div>
-                </div>
-              </li>
+                </li>
+              )}
             </ul>
           </div>
         </div>
