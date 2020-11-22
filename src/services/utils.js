@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export function setExpiration(minutes) {
   if (minutes) {
     const date = new Date();
@@ -57,3 +59,17 @@ export function decryptKey(value) {
   const str = window.atob(value);
   return JSON.parse(str);
 }
+
+export const formatISODate = (data) => {
+  try {
+    const convertIso = parseInt(data, 10) * 1000;
+    const date = new Date(convertIso);
+
+    const dateAndMonth = format(date, 'do MMM');
+    const year = format(date, 'yyy');
+
+    return `${dateAndMonth}, ${year}`;
+  } catch (e) {
+    return '';
+  }
+};

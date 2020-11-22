@@ -10,6 +10,8 @@ export default {
 
   USER: 'USER',
   USER_KEY: 'USER-OIJORBJKSE-STORE',
+
+  USER_TRANSACTIONS: 'USER_TRANSACTIONS',
 };
 
 export const namespaceActions = (namespace) => {

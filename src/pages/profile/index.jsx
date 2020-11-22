@@ -1,13 +1,25 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Head from 'next/head';
 
 export default function Profile() {
+  const { getUserItem } = useSelector((state) => state.user);
+
   const [user, setUser] = useState({
     name: '',
     email: '',
     phone: '',
     region: ''
   });
+
+  useEffect(() => {
+    if (getUserItem) setUser({
+      name: getUserItem.user_name || '',
+      email: getUserItem.user_email || '',
+      phone: getUserItem.user_phone || '',
+      region: getUserItem.user_zone || ''
+    });
+  }, [getUserItem]);
 
   const submitForm = (e) => {
     e.preventDefault();

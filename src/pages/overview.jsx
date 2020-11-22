@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
+import { useSelector } from 'react-redux';
 
 export default function Overview() {
+  const { getUserItem } = useSelector((state) => state.user);
 
   return (
     <Fragment>
@@ -56,15 +58,15 @@ export default function Overview() {
                           <h5 className="nk-wgw-title title">Bitcoin Wallet</h5>
                         </a>
                         <div className="nk-wgw-balance">
-                          <div className="amount">4.434953<span className="currency currency-btc">BTC</span></div>
-                          <div className="amount-sm">28,247.63<span className="currency currency-usd">USD</span></div>
+                          <div className="amount">{getUserItem && getUserItem.user_btc}<span className="currency currency-btc">BTC</span></div>
+                          <div className="amount-sm">{getUserItem && getUserItem.user_dollar}<span className="currency currency-usd">USD</span></div>
                         </div>
                       </div>
                       <div className="nk-wgw-actions">
                         <ul>
-                          <li><a href="#"><em className="icon ni ni-arrow-up-right"></em> <span>Send</span></a></li>
-                          <li><a href="#"><em className="icon ni ni-arrow-down-left"></em><span>Receive</span></a></li>
-                          <li><a href="#"><em className="icon ni ni-arrow-to-right"></em><span>Withdraw</span></a></li>
+                          <li><a><em className="icon ni ni-arrow-up-right"></em> <span>Send</span></a></li>
+                          <li><a><em className="icon ni ni-arrow-down-left"></em><span>Receive</span></a></li>
+                          <li><a><em className="icon ni ni-arrow-to-right"></em><span>Withdraw</span></a></li>
                         </ul>
                       </div>
                       <div className="nk-wgw-more dropdown">
