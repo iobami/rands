@@ -4,21 +4,31 @@ import { Banner, SubmitButton } from '../components';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { transferAction } from '../redux/entities/transfer';
+import { getRecentTransactionsAction, getTransactionsAction } from '../redux/entities/transactions';
 
 export default function TransferModal({ show, handleClose: close }) {
   const dispatch = useDispatch();
   const { transferItem, isLoading } = useSelector((state) => state.transfer);
   const { rateItem } = useSelector((state) => state.services);
 
+  const [showTokenInput, setShowTokenInput] = useState(false);
+
+  const reset = () => dispatch(transferAction.store(null));
+
+  useEffect(() => {
+    if (transferItem && transferItem.status === 'success') {
+      setShowTokenInput(true);
+      dispatch(getRecentTransactionsAction.loading());
+      dispatch(getTransactionsAction.loading());
+      setTimeout(() => reset(), 5000);
+    }
+  }, [transferItem]);
+
   const [rate, setRate] = useState(6650);
 
   useEffect(() => {
     if (rateItem && rateItem.USD) setRate(rateItem.USD.sell || 18250)
   }, [rateItem]);
-
-  const handleClose = () => {
-    if (!isLoading) close();
-  };
 
   const [transferData, setTransferData] = useState({
     usdAmount: 0,
@@ -27,11 +37,18 @@ export default function TransferModal({ show, handleClose: close }) {
     token: ''
   });
 
-  const reset = () => dispatch(transferAction.store(null));
-
-  // if (transferItem && transferItem.status === 'success') {
-  //   setTimeout(() => (window.location.href = routes.entry.path), 1000);
-  // }
+  const handleClose = () => {
+    if (!isLoading) {
+      setShowTokenInput(false);
+      setTransferData({
+        usdAmount: 0,
+        btcAmount: 0,
+        walletaddress: '',
+        token: ''
+      });
+      close();
+    }
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -89,14 +106,23 @@ export default function TransferModal({ show, handleClose: close }) {
                       <input
                         type="number"
                         min={0}
+                        step={0.01}
                         className="form-control form-control-lg"
                         id="usdAmount"
                         value={transferData.usdAmount}
+                        onBlur={(e) => {
+                          let usd = e.target.value * 1;
+
+                          setTransferData({
+                            ...transferData,
+                            usdAmount: usd.toFixed(2),
+                          });
+                        }}
                         onChange={(e) => {
                           const usd = e.target.value;
                           let btc = 0;
                           if (usd > 0) {
-                            btc = usd / rate;
+                            btc = (usd / rate).toFixed(8);
                           }
                           setTransferData({
                             ...transferData,
@@ -115,14 +141,24 @@ export default function TransferModal({ show, handleClose: close }) {
                       <input
                         type="number"
                         min={0}
+                        step={0.00000001}
                         className="form-control form-control-lg"
                         id="btcAmount"
                         value={transferData.btcAmount}
+                        onBlur={(e) => {
+                          let btc = e.target.value * 1;
+
+                          setTransferData({
+                            ...transferData,
+                            btcAmount: btc.toFixed(8),
+                          });
+                        }}
                         onChange={(e) => {
-                          const btc = e.target.value;
+                          let btc = e.target.value * 1;
                           let usd = 0;
+
                           if (btc > 0) {
-                            usd = btc * rate;
+                            usd = (btc * rate).toFixed(2);
                           }
                           setTransferData({
                             ...transferData,
@@ -136,7 +172,7 @@ export default function TransferModal({ show, handleClose: close }) {
                   </div>
                 </div>
 
-                {false && (
+                {showTokenInput && (
                   <div className="form-row mt-1">
                     <div className="col-md-12">
                       <div className="form-group">

@@ -37,7 +37,7 @@ function transferEpic(action$) {
       const encNamespace = getItem(namespaces.USER_KEY);
       const user = decryptKey(encNamespace ? encNamespace.key : '');
 
-      console.log(payload);
+      delete payload.usdAmount;
 
       const proxy = process.env.NEXT_PUBLIC_CORS_URL;
       return ajax({
@@ -48,7 +48,7 @@ function transferEpic(action$) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: user
+        body: { email: user.user_name, ...payload }
       }).pipe(
         map(({ response }) => transferAction.store(response)),
         catchError(error => {
