@@ -1,56 +1,63 @@
-import { createAction, handleActions } from 'redux-actions';
+import { handleActions } from 'redux-actions';
 import { combineEpics, ofType } from 'redux-observable';
 import { produce } from 'immer';
 import { of } from 'rxjs';
-import { switchMap, map, catchError, finalize } from 'rxjs/operators';
+import { switchMap, map, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
-// import { store } from '../../index';
 
-export const userDetailLoading = createAction('FETCH_ALL_USERS_DETAIL_LOADING');
-export const storeUserData = createAction('STORE_ALL_USERS_DETAIL');
-export const userDataLoader = createAction('ALL_USERS_DATA_LOADER');
+import namespaces, { namespaceActions } from '../namespaces';
+import { getItem, decryptKey } from '../../services';
+
+export const rateAction = namespaceActions(namespaces.BTC_RATE);
 
 export const reducer = handleActions(
   {
-    [storeUserData]: (state, action$) =>
+    [rateAction.store]: (state, action$) =>
       produce(state, (draft) => {
-        draft.item = action$.payload;
+        draft.rateItem = action$.payload;
+        draft.isLoading = false;
         return draft;
       }),
-    [userDataLoader]: (state, action$) =>
+
+    [rateAction.loadingState]: (state, action$) =>
       produce(state, (draft) => {
-        draft.loader = action$.payload;
+        draft.isLoading = action$.payload;
         return draft;
       }),
   },
-  { item: {}, loader: false },
+  {
+    rateItem: null, isLoading: false,
+  },
 );
 
-function fetchAllUsersEpic(action$) {
+function rateEpic(action$) {
   return action$.pipe(
-    ofType(userDetailLoading),
+    ofType(rateAction.loading),
     switchMap(() => {
-      console.log('testing redux');
-      const proxy = process.env.REACT_APP_API_CORS_URL;
+      const encNamespace = getItem(namespaces.USER_KEY);
+      const user = decryptKey(encNamespace ? encNamespace.key : '');
+
+      const proxy = process.env.NEXT_PUBLIC_CORS_URL;
       return ajax({
         url: proxy ?
-          `${proxy}${process.env.REACT_APP_API_URL}/getAll.php` :
-          `${process.env.REACT_APP_API_URL}/getAll.php`,
-        method: 'GET',
+          `${proxy}${process.env.NEXT_PUBLIC_API_URL}/rate.php` :
+          `${process.env.NEXT_PUBLIC_API_URL}/rate.php`,
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: user
       }).pipe(
-        map(({ response }) => storeUserData(response)),
+        map(({ response }) => rateAction.store(response)),
         catchError(error => {
-          return of(storeUserData(error.response));
-        }),
-        finalize(() => {
-          // store.dispatch(userDataLoader(false));
+          return of(rateAction.store(
+            error.response ||
+            { status: 'error', message: 'Service unavailable' }
+          ));
         })
       );
     }),
   );
 }
 
-export const epic = combineEpics(fetchAllUsersEpic);
+export const epic = combineEpics(rateEpic);

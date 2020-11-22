@@ -129,6 +129,7 @@ export default function Overview() {
                 title="Transactions"
                 description="Here is the list of your recent transactions"
                 data={getRecentTransactionsItem && getRecentTransactionsItem.data || []}
+                responseMessage="No record available"
               />
             </div>
           </div>

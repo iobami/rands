@@ -14,6 +14,7 @@ export default {
   RECENT_USER_TRANSACTIONS: 'RECENT_USER_TRANSACTIONS',
 
   BTC_TRANSFER: 'BTC_TRANSFER',
+  BTC_RATE: 'BTC_RATE',
 };
 
 export const namespaceActions = (namespace) => {

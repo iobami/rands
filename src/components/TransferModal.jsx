@@ -9,15 +9,17 @@ export default function TransferModal({ show, handleClose: close }) {
   const dispatch = useDispatch();
   const { transferItem, isLoading } = useSelector((state) => state.transfer);
 
+  const rate = 6650;
+
   const handleClose = () => {
     if (!isLoading) close();
   };
 
   const [transferData, setTransferData] = useState({
-    usdAmount: 0.09,
-    btcAmount: 0.09,
-    walletaddress: "154r1WdmBnzUgzbrkiRcoLg1CShHvwhoYr",
-    token: "VPLGTDU"
+    usdAmount: 0,
+    btcAmount: 0,
+    walletaddress: '',
+    token: ''
   });
 
   const reset = () => dispatch(transferAction.store(null));
@@ -81,13 +83,20 @@ export default function TransferModal({ show, handleClose: close }) {
                       <label className="form-label" htmlFor="usdAmount">USD Amount</label>
                       <input
                         type="number"
+                        min={0}
                         className="form-control form-control-lg"
                         id="usdAmount"
                         value={transferData.usdAmount}
                         onChange={(e) => {
+                          const usd = e.target.value;
+                          let btc = 0;
+                          if (usd > 0) {
+                            btc = usd / rate;
+                          }
                           setTransferData({
                             ...transferData,
-                            usdAmount: e.target.value
+                            usdAmount: usd,
+                            btcAmount: btc,
                           });
                         }}
                         placeholder="Enter amount"
@@ -100,13 +109,20 @@ export default function TransferModal({ show, handleClose: close }) {
                       <label className="form-label" htmlFor="btcAmount">BTC Amount</label>
                       <input
                         type="number"
+                        min={0}
                         className="form-control form-control-lg"
                         id="btcAmount"
                         value={transferData.btcAmount}
                         onChange={(e) => {
+                          const btc = e.target.value;
+                          let usd = 0;
+                          if (btc > 0) {
+                            usd = btc * rate;
+                          }
                           setTransferData({
                             ...transferData,
-                            btcAmount: e.target.value
+                            btcAmount: btc,
+                            usdAmount: usd,
                           });
                         }}
                         placeholder="Enter amount"

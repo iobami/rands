@@ -24,6 +24,7 @@ export default function Transactions() {
           title="Transactions"
           description="Here is the list of your transactions"
           data={getTransactionsItem && getTransactionsItem.data || []}
+          responseMessage="No record available"
         />
       </div>
     </Fragment>

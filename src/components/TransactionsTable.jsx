@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { formatISODate } from '../services';
 
-export default function TransactionsTable({ title, description, data }) {
+export default function TransactionsTable({ title, description, data, responseMessage }) {
 
   return (
     <Fragment>
@@ -79,7 +79,7 @@ export default function TransactionsTable({ title, description, data }) {
                     {(!data || (data && data.length === 0)) && (
                       <div className="nk-tb-item">
                         <div className="nk-tb-col">
-                          <span className="tb-lead">No record available</span>
+                          <span className="tb-lead">{responseMessage}</span>
                         </div>
                       </div>
                     )}
