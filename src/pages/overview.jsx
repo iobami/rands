@@ -1,18 +1,26 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecentTransactionsAction } from '../redux/entities/transactions';
 
 import { TransactionsTable } from '../components';
 import { routes } from '../routes';
+import { tradingView } from '../services';
 
 export default function Overview({ showTransferModal, showWalletModal }) {
   const dispatch = useDispatch();
   const { getUserItem } = useSelector((state) => state.user);
   const { getRecentTransactionsItem } = useSelector((state) => state.transactions);
 
+  const widgetRef = useRef(null);
+
   useEffect(() => {
     dispatch(getRecentTransactionsAction.loading());
+  }, []);
+
+  useEffect(() => {
+    const script = tradingView();
+    widgetRef.current.appendChild(script);
   }, []);
 
   return (
@@ -24,6 +32,14 @@ export default function Overview({ showTransferModal, showWalletModal }) {
       <div className="nk-content nk-content-fluid">
         <div className="container-xl wide-lg">
           <div className="nk-content-body">
+            <div
+              ref={widgetRef}
+              className="nk-block-head bg-light mb-3"
+              style={{ height: '340px' }}
+            >
+
+            </div>
+
             <div className="nk-block-head">
               <div className="nk-block-head-sub"><span>Account Wallet</span> </div>
               <div className="nk-block-between-md g-4">
