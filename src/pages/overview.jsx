@@ -27,7 +27,7 @@ export default function Overview({ showTransferModal, showWalletModal }) {
   return (
     <Fragment>
       <Head>
-        <title>Overview - Crypto | DashLite Admin Template</title>
+        <title>Overview - Crypto | Admin</title>
       </Head>
 
       <div className="nk-content nk-content-fluid">
