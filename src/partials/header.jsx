@@ -18,10 +18,11 @@ export default function Header({ onShow }) {
             <a className="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em className="icon ni ni-menu"></em></a>
           </div>
           <div className="nk-header-brand d-xl-none pt-1 pb-1">
-            <a className="logo-link" style={{ paddingTop: "0.41rem !important" }}>
-              <a href={routes.overview.path} className="logo-link d-flex justify-content-start align-items-center">
-                <Logo />
-              </a>
+            <a
+              href={routes.overview.path}
+              className="logo-link d-flex justify-content-start align-items-center"
+            >
+              <Logo />
             </a>
           </div>
           <div className="nk-header-news d-none d-xl-block">
