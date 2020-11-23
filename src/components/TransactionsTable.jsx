@@ -91,9 +91,11 @@ export default function TransactionsTable({ title, description, data, responseMe
                   </div>
                 </div>
 
-                <div className="card-inner-sm border-top text-center d-sm-none">
-                  <a href="#" className="btn btn-link btn-block">See History</a>
-                </div>
+                {false && (
+                  <div className="card-inner-sm border-top text-center d-sm-none">
+                    <a className="btn btn-link btn-block">See History</a>
+                  </div>
+                )}
               </div>
             </div>
           </div>

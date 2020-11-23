@@ -96,6 +96,7 @@ export default function TransferModal({ show, handleClose: close }) {
                           });
                         }}
                         placeholder="Enter wallet address"
+                        required={true}
                       />
                     </div>
                   </div>
@@ -189,6 +190,7 @@ export default function TransferModal({ show, handleClose: close }) {
                             });
                           }}
                           placeholder="Enter token"
+                          required={true}
                         />
                       </div>
                     </div>

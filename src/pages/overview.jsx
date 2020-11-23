@@ -67,7 +67,7 @@ export default function Overview({ showTransferModal, showWalletModal }) {
               </div>
             </div>
             <div className="nk-block">
-              <div className="nk-block-head-sm">
+              <div className="nk-block-head-sm pb-1">
                 <div className="nk-block-head-content">
                   <h5 className="nk-block-title title">Crypto Accounts</h5>
                 </div>
@@ -75,11 +75,11 @@ export default function Overview({ showTransferModal, showWalletModal }) {
               <div className="row g-gs">
                 <div
                   ref={widgetRef}
-                  className="col-md-6 col-lg-6 col-xl-8 col-xxl-8"
-                  style={{ height: '340px', backgroundColor: '#f9f9f9' }}
+                  className="col-md-6 col-lg-6 col-xl-8 col-xxl-8  mt-2"
+                  style={{ height: '284px', backgroundColor: '#f9f9f9' }}
                 />
 
-                <div className="col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                <div className="col-md-6 col-lg-6 col-xl-4 col-xxl-4 mt-2">
                   <div className="card card-bordered is-dark">
                     <div className="nk-wgw">
                       <div className="nk-wgw-inner">
