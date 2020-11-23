@@ -20,7 +20,8 @@ export default function Overview({ showTransferModal, showWalletModal }) {
 
   useEffect(() => {
     const script = tradingView();
-    widgetRef.current.appendChild(script);
+    widgetRef.current.innerHTML = script;
+    // widgetRef.current.appendChild(script);
   }, []);
 
   return (
@@ -32,14 +33,6 @@ export default function Overview({ showTransferModal, showWalletModal }) {
       <div className="nk-content nk-content-fluid">
         <div className="container-xl wide-lg">
           <div className="nk-content-body">
-            <div
-              ref={widgetRef}
-              className="nk-block-head bg-light mb-3"
-              style={{ height: '340px' }}
-            >
-
-            </div>
-
             <div className="nk-block-head">
               <div className="nk-block-head-sub"><span>Account Wallet</span> </div>
               <div className="nk-block-between-md g-4">
@@ -80,7 +73,13 @@ export default function Overview({ showTransferModal, showWalletModal }) {
                 </div>
               </div>
               <div className="row g-gs">
-                <div className="col-sm-6 col-lg-4 col-xl-6 col-xxl-4">
+                <div
+                  ref={widgetRef}
+                  className="col-md-6 col-lg-6 col-xl-8 col-xxl-8"
+                  style={{ height: '340px', backgroundColor: '#f9f9f9' }}
+                />
+
+                <div className="col-md-6 col-lg-6 col-xl-4 col-xxl-4">
                   <div className="card card-bordered is-dark">
                     <div className="nk-wgw">
                       <div className="nk-wgw-inner">
