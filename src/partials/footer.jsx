@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogoText } from '../components';
 
 export default function Footer() {
   return (
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="container-fluid">
         <div className="nk-footer-wrap">
           <div className="nk-footer-copyright">
-             &copy; {new Date().getFullYear()} DashLite
+             &copy; {new Date().getFullYear()} <LogoText />
           </div>
           <div className="nk-footer-links">
             {false && (

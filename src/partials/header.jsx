@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { routes } from '../routes';
+import { Logo } from '../components';
 
 export default function Header({ onShow }) {
   const { getUserItem } = useSelector((state) => state.user);
@@ -16,11 +17,11 @@ export default function Header({ onShow }) {
           <div className="nk-menu-trigger d-xl-none ml-n1" onClick={onShow}>
             <a className="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em className="icon ni ni-menu"></em></a>
           </div>
-          <div className="nk-header-brand d-xl-none">
-            <a href={routes.entry.path} className="logo-link">
-              <img className="logo-light logo-img" src="./images/logo.png" srcSet="./images/logo2x.png 2x" alt="logo" />
-              <img className="logo-dark logo-img" src="./images/logo-dark.png" srcSet="./images/logo-dark2x.png 2x" alt="logo-dark" />
-              <span className="nio-version">Crypto</span>
+          <div className="nk-header-brand d-xl-none pt-1 pb-1">
+            <a className="logo-link" style={{ paddingTop: "0.41rem !important" }}>
+              <a href={routes.overview.path} className="logo-link d-flex justify-content-start align-items-center">
+                <Logo />
+              </a>
             </a>
           </div>
           <div className="nk-header-news d-none d-xl-block">

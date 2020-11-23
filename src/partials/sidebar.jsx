@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import { routes } from '../routes';
+import { Logo } from '../components';
 
 const menu = [
   // { title: 'Dashboard', className: 'icon ni ni-dashboard', route: routes.entry.path },
@@ -25,12 +26,8 @@ export default function Sidebar({ show, onHide, showTransferModal }) {
         data-content="sidebarMenu"
       >
         <div className="nk-sidebar-element nk-sidebar-head">
-          <div className="nk-sidebar-brand">
-            <a className="logo-link nk-sidebar-logo">
-              <img className="logo-light logo-img" src="./images/logo.png" srcSet="./images/logo2x.png 2x" alt="logo" />
-              <img className="logo-dark logo-img" src="./images/logo-dark.png" srcSet="./images/logo-dark2x.png 2x" alt="logo-dark" />
-              <span className="nio-version">Crypto</span>
-            </a>
+          <div className="nk-sidebar-brand d-flex justify-content-start align-items-center w-100">
+            <Logo />
           </div>
           <div className="nk-menu-trigger mr-n2" onClick={onHide}>
             <a className="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em className="icon ni ni-arrow-left"></em></a>

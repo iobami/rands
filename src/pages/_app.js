@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   const [showSideBar, setShowSideBar] = useState(false);
 
   const [show, setShow] = useState(false);
-  const showTransferModal = () => setShow(false);
+  const showTransferModal = () => setShow(true);
   const hideTransferModal = () => setShow(false);
 
   const [showWallet, setShowWallet] = useState(false);

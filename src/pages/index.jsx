@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { routes } from '../routes';
-import { Banner, SubmitButton } from '../components';
+import { Banner, SubmitButton, LogoText } from '../components';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../redux/entities/auth';
@@ -43,7 +43,7 @@ export default function Login() {
         <div className="card-body">
           <div className="row">
             <div className="col-md-8 mx-auto mb-3">
-              <h4>Dash<span className="text-primary">Lite</span></h4>
+              <h4><LogoText /></h4>
               <p>Welcome back! Log in to your account.</p>
             </div>
           </div>
