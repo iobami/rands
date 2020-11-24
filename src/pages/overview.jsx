@@ -73,7 +73,7 @@ export default function Overview({ showTransferModal, showWalletModal }) {
                 </div>
               </div>
               <div className="row g-gs">
-                <div className="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mt-2">
+                <div className="col-md-12 col-lg-6 col-xl-6 col-xxl-4 mt-2">
                   <div className="card card-bordered is-dark">
                     <div className="nk-wgw">
                       <div className="nk-wgw-inner">
@@ -126,14 +126,16 @@ export default function Overview({ showTransferModal, showWalletModal }) {
                     </div>
                   </div>
                 </div>
+
+                <div
+                  ref={widgetRef}
+                  className="col-md-12 col-lg-6 col-xl-6 mt-2"
+                  style={{ height: '284px', backgroundColor: '#f9f9f9' }}
+                />
               </div>
 
               <div className="row g-gs">
-                <div
-                  ref={widgetRef}
-                  className="col-md-12  mt-2"
-                  style={{ height: '284px', backgroundColor: '#f9f9f9' }}
-                />
+                
               </div>
             </div>
             <div className="nk-block nk-block-lg mt-2">
