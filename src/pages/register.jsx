@@ -35,7 +35,7 @@ export default function Register() {
   return (
     <Fragment>
       <Head>
-        <title>My  Crypto - Registration page | DashLite Admin Template</title>
+        <title>Wallet - Registration  | Microsoftwallet</title>
       </Head>
 
       <div className="card pt-4 pb-4">
@@ -64,7 +64,7 @@ export default function Register() {
                             user_name: e.target.value
                           });
                         }}
-                        placeholder="Enter password"
+                        placeholder="Enter your name"
                       />
                     </div>
                   </div>
@@ -104,7 +104,7 @@ export default function Register() {
                             user_phone: e.target.value
                           });
                         }}
-                        placeholder="Enter your email"
+                        placeholder="Enter your phone"
                       />
                     </div>
                   </div>
